@@ -126,7 +126,7 @@ async def start(client, message):
                     logger.exception(e)
                     f_caption=f_caption
             if f_caption is None:
-                f_caption = f"{title}"
+                f_caption = f"FILE : <code>{file_name}</code> Size : <i>{file_size}</i> <a href=https://t.me/cinima_lokham>cinima lokham</a>
             try:
                 await client.send_cached_media(
                     chat_id=message.from_user.id,
