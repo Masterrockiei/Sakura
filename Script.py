@@ -9,11 +9,12 @@ class script(object):
 ✯ 𝙻𝙰𝙽𝙶𝚄𝙰𝙶𝙴: 𝙿𝚈𝚃𝙷𝙾𝙽 𝟹
 ✯ 𝙳𝙰𝚃𝙰 𝙱𝙰𝚂𝙴: 𝙼𝙾𝙽𝙶𝙾 𝙳𝙱
 ✯ 𝙱𝙾𝚃 𝚂𝙴𝚁𝚅𝙴𝚁: 𝙷𝙴𝚁𝙾𝙺𝚄
+✯ 𝚂𝙾𝚄𝚁𝙲𝙴 𝙲𝙾𝙳𝙴: 𝙷𝙴𝚁𝙴 <a href=https://github.com/Masterrockiei/source</a>
 ✯ 𝙱𝚄𝙸𝙻𝙳 𝚂𝚃𝙰𝚃𝚄𝚂: v1.0.1 [ 𝙱𝙴𝚃𝙰 ]"""
     SOURCE_TXT = """<b>NOTE:</b>
 - Sakura is not a open source project. 
 - but i will give my movie group link join and enjoy
-✯ 𝑴𝒐𝒗𝒊𝒆 𝒈𝒓𝒐𝒖𝒑:<a href=https://t.me/cinima_lokham>𝒄𝒊𝒏𝒊𝒎𝒂 𝒍𝒐𝒌𝒉𝒂𝒎</a>
+✯ 🎬 𝑴𝒐𝒗𝒊𝒆 𝒈𝒓𝒐𝒖𝒑:<a href=https://t.me/cinima_lokham>𝒄𝒊𝒏𝒊𝒎𝒂 𝒍𝒐𝒌𝒉𝒂𝒎</a>
 
 <b>DEVS:</b>
 - <a href=https://t.me/Unni0240>Amal Nath</a>"""
@@ -92,11 +93,11 @@ This module only works for my admins
 • /unban  - <code>to unban a user.</code>
 • /channel - <code>to get list of total connected channels</code>
 • /broadcast - <code>to broadcast a message to all users</code>"""
-    STATUS_TXT = """★ 𝚃𝙾𝚃𝙰𝙻 𝙵𝙸𝙻𝙴𝚂: <code>{}</code>
-★ 𝚃𝙾𝚃𝙰𝙻 𝚄𝚂𝙴𝚁𝚂: <code>{}</code>
-★ 𝚃𝙾𝚃𝙰𝙻 𝙲𝙷𝙰𝚃𝚂: <code>{}</code>
-★ 𝚄𝚂𝙴𝙳 𝚂𝚃𝙾𝚁𝙰𝙶𝙴: <code>{}</code> 𝙼𝙱
-★ 𝙵𝚁𝙴𝙴 𝚂𝚃𝙾𝚁𝙰𝙶𝙴: <code>{}</code> 𝙼𝙱"""
+    STATUS_TXT = """⍟ 𝚃𝙾𝚃𝙰𝙻 𝙵𝙸𝙻𝙴𝚂: <code>{}</code>
+⍟ 𝚃𝙾𝚃𝙰𝙻 𝚄𝚂𝙴𝚁𝚂: <code>{}</code>
+⍟ 𝚃𝙾𝚃𝙰𝙻 𝙲𝙷𝙰𝚃𝚂: <code>{}</code>
+⍟ 𝚄𝚂𝙴𝙳 𝚂𝚃𝙾𝚁𝙰𝙶𝙴: <code>{}</code> 𝙼𝙱
+⍟ 𝙵𝚁𝙴𝙴 𝚂𝚃𝙾𝚁𝙰𝙶𝙴: <code>{}</code> 𝙼𝙱"""
     LOG_TEXT_G = """#NewGroup
 Group = {}(<code>{}</code>)
 Total Members = <code>{}</code>
