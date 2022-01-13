@@ -91,7 +91,7 @@ async def answer(bot, query):
 def get_reply_markup(query):
     buttons = [
         [
-            InlineKeyboardButton('Search again', switch_inline_query_current_chat=query)
+            InlineKeyboardButton('🎬 Movie Group 🎬',url=f'http://t.me/cinima_lokham')
         ]
         ]
     return InlineKeyboardMarkup(buttons)
