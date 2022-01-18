@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.jpg" alt="Sakura logo">
+  <img src="/logo.jpg" alt="Sakura logo">
 </p>
 <h1 align="center">
   <b>Sakura Bot </b>
