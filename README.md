@@ -2,7 +2,7 @@
   <img src="assets/logo.jpg" alt="Sakura logo">
 </p>
 <h1 align="center">
-  <b>Eva Maria Bot</b>
+  <b>Sakura Bot </b>
 </h1>
 
 
