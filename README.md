@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="anime_image_10ef39b0da.png.jpg/logo.jpg" alt="Sakura logo">
+  <img src="anime_image_10ef39b0da.jpg/logo.jpg" alt="Sakura logo">
 </p>
 <h1 align="center">
   <b>Sakura Bot </b>
