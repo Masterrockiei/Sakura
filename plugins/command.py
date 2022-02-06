@@ -41,13 +41,13 @@ async def start(client, message):
         await client.send_message(LOG_CHANNEL, script.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention))
     if len(message.command) != 2:
         buttons = [[
-            InlineKeyboardButton('➕ 𝐀𝐝𝐝 𝐌𝐞 𝐓𝐨 𝐘𝐨𝐮𝐫 𝐆𝐫𝐨𝐮𝐩𝐬 ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
-            ],[
             InlineKeyboardButton('🔍 𝐒𝐞𝐚𝐫𝐜𝐡', switch_inline_query_current_chat=''),
-            InlineKeyboardButton('🤖 𝐔𝐩𝐝𝐚𝐭𝐞𝐬', url='https://t.me/amal_nath_05')
+            InlineKeyboardButton('🤖 𝗨𝗽𝗱𝗮𝘁𝗲', url='https://t.me/amal_nath_05')
             ],[
-            InlineKeyboardButton('ℹ️ 𝐇𝐞𝐥𝐩', callback_data='help'),
-            InlineKeyboardButton('😊 𝐀𝐛𝐨𝐮𝐭', callback_data='about')
+            InlineKeyboardButton('ℹ️ 𝗛𝗲𝗹𝗽', callback_data='help'),
+            InlineKeyboardButton('😊 𝗔𝗯𝗼𝘂𝘁', callback_data='about')
+        ],[
+            InlineKeyboardButton('➕ 𝗔𝗱𝗱 𝗠𝗲 𝗧𝗼 𝗬𝗼𝘂𝗿 𝗚𝗿𝗼𝘂𝗽 ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_photo(
@@ -82,13 +82,14 @@ async def start(client, message):
         return
     if len(message.command) ==2 and message.command[1] in ["subscribe", "error", "okay", "help"]:
         buttons = [[
-            InlineKeyboardButton('➕ 𝐀𝐝𝐝 𝐌𝐞 𝐓𝐨 𝐌𝐞 𝐓𝐨 𝐘𝐨𝐮𝐫 𝐆𝐫𝐨𝐮𝐩𝐬 ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
             ],[
             InlineKeyboardButton('🔍 𝐒𝐞𝐚𝐫𝐜𝐡', switch_inline_query_current_chat=''),
             InlineKeyboardButton('🤖 𝐔𝐩𝐝𝐚𝐭𝐞𝐬', url='https://t.me/amal_nath_05')
             ],[
             InlineKeyboardButton('ℹ️ 𝐇𝐞𝐥𝐩', callback_data='help'),
             InlineKeyboardButton('😊 𝐀𝐛𝐨𝐮𝐭', callback_data='about')
+            ],[
+            InlineKeyboardButton('➕ 𝐀𝐝𝐝 𝐌𝐞 𝐓𝐨 𝐌𝐞 𝐓𝐨 𝐘𝐨𝐮𝐫 𝐆𝐫𝐨𝐮𝐩𝐬 ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_photo(
