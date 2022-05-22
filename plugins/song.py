@@ -15,3 +15,21 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>
 """
+
+from pyrogram import Client, filters
+
+import youtube_dl
+from youtube_search import YoutubeSearch
+import requests
+
+import os
+import time
+
+## Extra Fns -------------------------------
+
+# Convert hh:mm:ss to seconds
+def time_to_seconds(time):
+    stringt = str(time)
+    return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(':'))))
+
+
