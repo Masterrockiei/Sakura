@@ -93,7 +93,7 @@ def a(client, message: Message):
         print(e)
         
 
-        def get_text(message: Message) -> [None, str]:
+def get_text(message: Message) -> [None, str]:
     text_to_return = message.text
     if message.text is None:
         return None
