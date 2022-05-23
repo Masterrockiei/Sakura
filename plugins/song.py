@@ -22,7 +22,7 @@ def time_to_seconds(time):
     stringt = str(time)
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(':'))))
   
-@Client.on_message(filters.command(["song", "music", "mp3"]) & filters.group & filters.text & ~filters.edited & filters.incoming)
+@Client.on_message(filters.command(["song", "music", "mp3"]) & ~filters.group & ~filters.text & ~filters.edited & ~filters.incoming)
 def a(client, message: Message):
     urlissed = get_text(message)
     query = ''
@@ -75,8 +75,7 @@ def a(client, message: Message):
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = f'🏷 <b>Title:</b> <a href="{link}">{title}</a>'
-        secmul, dur, dur_arr = 1, 0, duration.split(':')
+        rep = f'🏷 <b>Title:</b> <a href="{link}">{title}</a>⏳ <b>Duration:</b> <code>{duration}</code>\n👀 <b>Views:</b> <code>{views}</code>\n🎧 <b>Requested By:</b> {message.from_user.mention()} \n📤 <b>Uploaded By: @ElsamovienewBot</b>'
         for i in range(len(dur_arr)-1, -1, -1):
             dur += (int(dur_arr[i]) * secmul)
             secmul *= 60
