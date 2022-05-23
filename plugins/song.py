@@ -22,7 +22,7 @@ def time_to_seconds(time):
     stringt = str(time)
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(':'))))
   
-@Client.on_message(filters.command(["song", "music", "mp3"]) & ~filters.group & ~filters.edited)
+@Client.on_message(filters.command(["song", "music", "mp3"]) & filters.group & filters.text & ~filters.edited & filters.incoming)
 def a(client, message: Message):
     urlissed = get_text(message)
     query = ''
@@ -54,7 +54,7 @@ def a(client, message: Message):
             #     m.edit("Exceeded 30mins cap")
             #     return
             
-            performer = f"[Zaute Km]" 
+            performer = f"[Sakura]" 
             thumb_name = f'thumb{message.message_id}.jpg'
             thumb = requests.get(thumbnail, allow_redirects=True)
             open(thumb_name, 'wb').write(thumb.content)
@@ -84,7 +84,7 @@ def a(client, message: Message):
         m.delete()
         message.delete()
     except Exception as e:
-        m.edit('**An Error Occured. Please Report This To @JOSPSupport !!**')
+        m.edit('**An Error Occured. Please Report This To @Unni0240 !!**')
         print(e)
     try:
         os.remove(audio_file)
