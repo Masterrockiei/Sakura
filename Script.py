@@ -46,6 +46,18 @@ class script(object):
 
 <b>Alert buttons:</b>
 <code>[Button Text](buttonalert:This is an alert message)</code>"""
+    MUSIC_TXT = """Help: <b>Music</b>
+    
+Music download modules, for those who love music.
+
+<b>Commands and Usage:</b>
+• /song or /mp3 (songname) - download song from yt servers.
+• /video or /mp4 (songname) - download video from yt servers.
+
+<b>NOTE:</b>
+• These commands works only on group.
+• These commands can be used by any group member."""
+    
     AUTOFILTER_TXT = """Help: <b>Auto Filter</b>
 
 <b>NOTE:</b>
