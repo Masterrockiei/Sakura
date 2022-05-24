@@ -57,6 +57,14 @@ Music download modules, for those who love music.
 <b>NOTE:</b>
 • These commands works only on group.
 • These commands can be used by any group member."""
+    BAN_TXT = Help: <b>Ban</a>
+    
+<b>NOTE:</b>
+*Admin only:*
+- /ban <userhandle>: bans a user. (via handle, or reply)
+- /tban <userhandle> x(m/h/d): bans a user for x time. (via handle, or reply). m = minutes, h = hours, d = days.
+- /unban <userhandle>: unbans a user. (via handle, or reply)
+- /punch <userhandle>: Punches a user out of the group, (via handle, or reply)    
     AUTOFILTER_TXT = """Help: <b>Auto Filter</b>
 
 <b>NOTE:</b>
