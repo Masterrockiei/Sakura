@@ -57,7 +57,6 @@ Music download modules, for those who love music.
 <b>NOTE:</b>
 • These commands works only on group.
 • These commands can be used by any group member."""
-    
     AUTOFILTER_TXT = """Help: <b>Auto Filter</b>
 
 <b>NOTE:</b>
