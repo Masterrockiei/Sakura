@@ -207,6 +207,79 @@ def punch(bot: Bot, update: Update, args: List[str]) -> str:
         message.reply_text("Well damn, I can't punch that user.")
 
     return log_message
+  
+  
+@run_async
+@bot_admin
+@can_restrict
+def punchme(bot: Bot, update: Update):
+    user_id = update.effective_message.from_user.id
+    if is_user_admin(update.effective_chat, user_id):
+        update.effective_message.reply_text("I wish I could... but you're an admin.")
+        return
+
+    res = update.effective_chat.unban_member(user_id)  # unban on current user = kick
+    if res:
+        update.effective_message.reply_text("No problem.")
+    else:
+        update.effective_message.reply_text("Huh? I can't :/")
+
+
+@run_async
+@connection_status
+@bot_admin
+@can_restrict
+@user_admin
+@loggable
+def unban(bot: Bot, update: Update, args: List[str]) -> str:
+    message = update.effective_message
+    user = update.effective_user
+    chat = update.effective_chat
+    log_message = ""
+
+    user_id, reason = extract_user_and_text(message, args)
+
+    if not user_id:
+        message.reply_text("I doubt that's a user.")
+        return log_message
+
+    try:
+        member = chat.get_member(user_id)
+    except BadRequest as excp:
+        if excp.message != "User not found":
+            raise
+
+        message.reply_text("I can't seem to find this user.")
+        return log_message
+    if user_id == bot.id:
+        message.reply_text("How would I unban myself if I wasn't here...?")
+        return log_message
+
+    if is_user_in_chat(chat, user_id):
+        message.reply_text("Isn't this person already here??")
+        return log_message
+
+    chat.unban_member(user_id)
+    message.reply_text("Yep, this user can join!")
+
+    log = (f"<b>{html.escape(chat.title)}:</b>\n"
+           f"#UNBANNED\n"
+           f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
+           f"<b>User:</b> {mention_html(member.user.id, member.user.first_name)}")
+    if reason:
+        log += f"\n<b>Reason:</b> {reason}"
+
+    return log
+
+
+@run_async
+@connection_status
+@bot_admin
+@can_restrict
+@gloggable
+def selfunban(bot: Bot, update: Update, args: List[str]) -> str:
+    message = update.effective_message
+    user = update.effective_user
 
   
 
