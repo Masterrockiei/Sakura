@@ -125,6 +125,92 @@ def temp_ban(bot: Bot, update: Update, args: List[str]) -> str:
     if not bantime:
         return log_message
       
+    log = (f"<b>{html.escape(chat.title)}:</b>\n"
+           "#TEMP BANNED\n"
+           f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
+           f"<b>User:</b> {mention_html(member.user.id, member.user.first_name)}\n"
+           f"<b>Time:</b> {time_val}")
+    if reason:
+        log += "\n<b>Reason:</b> {}".format(reason)
+
+    try:
+        chat.kick_member(user_id, until_date=bantime)
+        # bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
+        bot.sendMessage(chat.id, f"Banned! User {mention_html(member.user.id, member.user.first_name)} "
+                                 f"will be banned for {time_val}.",
+                        parse_mode=ParseMode.HTML)
+        return log
+
+    except BadRequest as excp:
+        if excp.message == "Reply message not found":
+            # Do not reply
+            message.reply_text(f"Banned! User will be banned for {time_val}.", quote=False)
+            return log
+        else:
+            LOGGER.warning(update)
+            LOGGER.exception("ERROR banning user %s in chat %s (%s) due to %s",
+                             user_id, chat.title, chat.id, excp.message)
+            message.reply_text("Well damn, I can't ban that user.")
+
+    return log_message
+  
+  
+@run_async
+@connection_status
+@bot_admin
+@can_restrict
+@user_admin
+@loggable
+def punch(bot: Bot, update: Update, args: List[str]) -> str:
+    chat = update.effective_chat
+    user = update.effective_user
+    message = update.effective_message
+    log_message = ""
+
+    user_id, reason = extract_user_and_text(message, args)
+
+    if not user_id:
+        message.reply_text("I doubt that's a user.")
+        return log_message
+
+    try:
+        member = chat.get_member(user_id)
+    except BadRequest as excp:
+        if excp.message != "User not found":
+            raise
+
+        message.reply_text("I can't seem to find this user.")
+        return log_message
+    if user_id == bot.id:
+        message.reply_text("Yeahhh I'm not gonna do that.")
+        return log_message
+
+    if is_user_ban_protected(chat, user_id):
+        message.reply_text("I really wish I could punch this user....")
+        return log_message
+
+    res = chat.unban_member(user_id)  # unban on current user = kick
+    if res:
+        # bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
+        bot.sendMessage(chat.id, f"One Punched! {mention_html(member.user.id, member.user.first_name)}.",
+                        parse_mode=ParseMode.HTML)
+        log = (f"<b>{html.escape(chat.title)}:</b>\n"
+               f"#KICKED\n"
+               f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
+               f"<b>User:</b> {mention_html(member.user.id, member.user.first_name)}")
+        if reason:
+            log += f"\n<b>Reason:</b> {reason}"
+
+        return log
+
+     else:
+        message.reply_text("Well damn, I can't punch that user.")
+
+    return log_message
+
+  
+
+  
       
       
       
