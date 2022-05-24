@@ -147,7 +147,7 @@ if is_module_loaded(FILENAME):
             bot.send_message(log_channel, f"Channel has been unlinked from {chat.title}")
             message.reply_text("Log channel has been un-set.")
             
-                else:
+         else:
             message.reply_text("No log channel has been set yet!")
 
 
