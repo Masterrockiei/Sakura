@@ -1,4 +1,5 @@
 git+https://github.com/subinps/pyrogram@inline-m
+https://github.com/New-dev0/Telethon/archive/PlayTime.zip
 tgcrypto==1.2.2
 pymongo[srv]==3.11.4
 motor==2.4.0
