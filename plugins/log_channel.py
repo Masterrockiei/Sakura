@@ -99,6 +99,53 @@ if is_module_loaded(FILENAME):
         else:
             message.reply_text("No log channel has been set for this group!")
             
+ 
+    @run_async
+    @user_admin
+    def setlog(bot: Bot, update: Update):
+
+        message = update.effective_message
+        chat = update.effective_chat
+        if chat.type == chat.CHANNEL:
+            message.reply_text("Now, forward the /setlog to the group you want to tie this channel to!")
+
+        elif message.forward_from_chat:
+            sql.set_chat_log_channel(chat.id, message.forward_from_chat.id)
+            try:
+                message.delete()
+            except BadRequest as excp:
+                if excp.message != "Message to delete not found":
+                    LOGGER.exception("Error deleting message in log channel. Should work anyway though.")
+
+            try:
+                bot.send_message(message.forward_from_chat.id,
+                                 f"This channel has been set as the log channel for {chat.title or chat.first_name}.")
+            except Unauthorized as excp:
+                if excp.message == "Forbidden: bot is not a member of the channel chat":
+                    bot.send_message(chat.id, "Successfully set log channel!")
+                else:
+                    LOGGER.exception("ERROR in setting the log channel.")
+
+            bot.send_message(chat.id, "Successfully set log channel!")
+
+        else:
+            message.reply_text("The steps to set a log channel are:\n"
+                               " - add bot to the desired channel\n"
+                               " - send /setlog to the channel\n"
+                               " - forward the /setlog to the group\n")
+
+
+    @run_async
+    @user_admin
+    def unsetlog(bot: Bot, update: Update):
+
+        message = update.effective_message
+        chat = update.effective_chat
+
+        log_channel = sql.stop_chat_logging(chat.id)
+        if log_channel:
+            bot.send_message(log_channel, f"Channel has been unlinked from {chat.title}")
+            message.reply_text("Log channel has been un-set.")
             
             
             
