@@ -147,5 +147,55 @@ if is_module_loaded(FILENAME):
             bot.send_message(log_channel, f"Channel has been unlinked from {chat.title}")
             message.reply_text("Log channel has been un-set.")
             
+                else:
+            message.reply_text("No log channel has been set yet!")
+
+
+    def __stats__():
+        return f"{sql.num_logchannels()} log channels set."
+
+
+    def __migrate__(old_chat_id, new_chat_id):
+        sql.migrate_chat(old_chat_id, new_chat_id)
+
+
+    def __chat_settings__(chat_id, user_id):
+        log_channel = sql.get_chat_log_channel(chat_id)
+        if log_channel:
+            log_channel_info = dispatcher.bot.get_chat(log_channel)
+            return f"This group has all it's logs sent to: {escape_markdown(log_channel_info.title)} (`{log_channel}`)"
+        return "No log channel is set for this group!"
+
+
+    __help__ = """
+*Admin only:*
+- /logchannel: get log channel info
+- /setlog: set the log channel.
+- /unsetlog: unset the log channel.
+Setting the log channel is done by:
+- adding the bot to the desired channel (as an admin!)
+- sending /setlog in the channel
+- forwarding the /setlog to the group
+"""
+
+    __mod_name__ = "LOG CHANNEL"
+
+    LOG_HANDLER = CommandHandler("logchannel", logging)
+    SET_LOG_HANDLER = CommandHandler("setlog", setlog)
+    UNSET_LOG_HANDLER = CommandHandler("unsetlog", unsetlog)
+
+    dispatcher.add_handler(LOG_HANDLER)
+    dispatcher.add_handler(SET_LOG_HANDLER)
+    dispatcher.add_handler(UNSET_LOG_HANDLER)
+
+else:
+    # run anyway if module not loaded
+    def loggable(func):
+        return func
+
+
+    def gloggable(func):
+        return func
+            
             
             
