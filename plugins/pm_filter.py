@@ -455,6 +455,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode='html'
         )
+    elif query.data == "music":
+        buttons = [[
+            InlineKeyboardButton('👩‍🦯 𝐁𝐚𝐜𝐤', callback_data='about')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.MUSIC_TXT,
+            reply_markup=reply_markup,
+            parse_mode='html'
+        )
     elif query.data == "manuelfilter":
         buttons = [[
             InlineKeyboardButton('👩‍🦯 𝐁𝐚𝐜𝐤', callback_data='help'),
