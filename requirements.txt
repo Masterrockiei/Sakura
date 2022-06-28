@@ -17,6 +17,3 @@ youtube_search
 youtube-dl
 yt-dlp
 wget
-aiogram
-emoji
-instalooter==2.4.4
