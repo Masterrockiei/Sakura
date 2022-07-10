@@ -16,8 +16,8 @@
       "inline",
       "song-download"
     ],
-    "website": "https://github.com/Masterrockiei/EvaMaria",
-    "repository": "https://github.com/Masterrockiei/EvaMaria",
+    "website": "https://github.com/Masterrockiei/Sona",
+    "repository": "https://github.com/Masterrockiei/Sona",
     "env": {
         "BOT_TOKEN": {
             "description": "Your bot token.",
